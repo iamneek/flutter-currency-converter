@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget{
   const CurrencyConverterMaterialPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage>{
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amberAccent,
@@ -21,8 +28,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "0",
+            Text(
+              "${(result*141.24).toStringAsFixed(2)} NPR",
               style: TextStyle(
                 fontSize: 36.0,
                 fontWeight: FontWeight.bold,
@@ -32,6 +39,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: TextField(
+                controller: textEditingController,
                 decoration: InputDecoration(
                   hintText: "Enter amount in USD",
                   prefixIcon: Icon(Icons.attach_money_rounded),
@@ -51,7 +59,11 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                  result = double.parse(textEditingController.text);
+                  });
+                },
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black),
                   foregroundColor: WidgetStatePropertyAll(Colors.white),
@@ -75,4 +87,4 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
       ),
     );
   }
-}
+  }
