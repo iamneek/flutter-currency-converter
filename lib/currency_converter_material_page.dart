@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-class CurrencyConverterMaterialPage extends StatefulWidget{
+
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
-  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
 }
 
-class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage>{
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amberAccent,
@@ -21,24 +24,24 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         centerTitle: true,
-        
       ),
       backgroundColor: Colors.amberAccent,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "${(result*141.24).toStringAsFixed(2)} NPR",
-              style: TextStyle(
-                fontSize: 36.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${(result * 141.24).toStringAsFixed(2)} NPR",
+                style: TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: TextField(
+              const SizedBox(height: 20),
+              TextField(
                 controller: textEditingController,
                 decoration: InputDecoration(
                   hintText: "Enter amount in USD",
@@ -47,7 +50,6 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
-                    gapPadding: 12,
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
                 ),
@@ -55,13 +57,11 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
                   decimal: true,
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: ElevatedButton(
+              const SizedBox(height: 12),
+              ElevatedButton(
                 onPressed: () {
                   setState(() {
-                  result = double.parse(textEditingController.text);
+                    result = double.parse(textEditingController.text);
                   });
                 },
                 style: ButtonStyle(
@@ -81,10 +81,10 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-  }
+}
