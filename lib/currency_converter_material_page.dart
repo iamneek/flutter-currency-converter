@@ -6,7 +6,17 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      appBar: AppBar(
+        backgroundColor: Colors.amberAccent,
+        elevation: 0,
+        title: Text(
+          "Cool Converter",
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+        ),
+        centerTitle: true,
+        
+      ),
+      backgroundColor: Colors.amberAccent,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -19,12 +29,12 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Container(
+            Padding(
               padding: const EdgeInsets.all(12.0),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: "Enter amount in NPR",
-                  prefixIcon: Icon(Icons.currency_rupee_rounded, ),
+                  hintText: "Enter amount in USD",
+                  prefixIcon: Icon(Icons.attach_money_rounded),
                   prefixIconColor: Colors.black54,
                   filled: true,
                   fillColor: Colors.white,
@@ -34,11 +44,32 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   ),
                 ),
                 keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true
+                  decimal: true,
                 ),
               ),
             ),
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.black),
+                  foregroundColor: WidgetStatePropertyAll(Colors.white),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ),
+                  minimumSize: WidgetStatePropertyAll(
+                    Size(double.infinity, 50),
+                  ),
+                ),
+                child: const Text(
+                  "Convert",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
           ],
         ),
       ),
